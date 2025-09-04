@@ -1,0 +1,2231 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)https://kidprenuer-eosin.vercel.app/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!--
+    Kidpreneur Hub — Professional & Playful Single-File Website
+    - Single .html file (open with VS Code + Live Server)
+    - Black background, colorful accents, responsive layout
+    - Google Fonts, Font Awesome icons, AOS (Animate On Scroll)
+    - Images from Unsplash for a polished look
+    - Persistent Like counter using localStorage
+    - All CSS and JS embedded in this file for portability
+    Created: 2025
+  -->
+  
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kidpreneur Hub — Creative Kids, Smart Starts</title>
+
+  
+  <!-- Google Fonts -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="./Kidpreneur Hub — Creative Kids, Smart Starts_files/css2" rel="stylesheet">
+
+  <!-- Font Awesome for icons (CDN) -->
+  <link rel="stylesheet" href="./Kidpreneur Hub — Creative Kids, Smart Starts_files/all.min.css" integrity="sha512-M9f6Xb3bQ0e...placeholder" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- AOS (Animate On Scroll) CSS -->
+  <link href="./Kidpreneur Hub — Creative Kids, Smart Starts_files/aos.css" rel="stylesheet">
+
+  <style>
+
+
+
+    /* =========================
+       Base / Reset
+       ========================= */
+    :root{
+      --bg: #07070a;
+      --panel: #0f1014;
+      --muted: #9aa0ad;
+      --text: #edf2ff;
+      --accent1: #5cc8ff;   /* playful blue */
+      --accent2: #ffce52;   /* playful yellow */
+      --accent3: #ff76b0;   /* playful pink */
+      --green: #70f0a6;
+      --glass: rgba(255,255,255,0.04);
+      --radius: 14px;
+      --shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+
+    *{ box-sizing: border-box; margin:0; padding:0; }
+    html,body{ height:100%; }
+    body{
+      background: radial-gradient(800px 400px at 10% -10%, rgba(92,200,255,.06), transparent 12%),
+                  radial-gradient(700px 300px at 110% 10%, rgba(255,122,182,.04), transparent 12%),
+                  var(--bg);
+      color:var(--text);
+      font-family: Inter, Poppins, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.65;
+      padding-bottom:40px;
+    }
+
+    
+    
+
+    /* =========================
+       Layout Container
+       ========================= */
+    .container{
+      width: min(1180px, 94%);
+      margin-inline: auto;
+    }
+
+    /* =========================
+       Top Navigation
+       ========================= */
+    nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:18px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      text-transform:uppercase; font-weight:800; letter-spacing:.6px;
+      color:var(--text);
+    }
+    .logo{
+      width:44px; height:44px; border-radius:10px;
+      background: conic-gradient(from 200deg, var(--accent1), var(--accent3), var(--accent2), var(--accent1));
+      box-shadow: 0 10px 26px rgba(92,200,255,.12);
+      display:inline-grid; place-items:center; font-weight:800; color:#07070a;
+    }
+    .nav-links{
+      display:flex; gap:12px; align-items:center;
+    }
+    .nav-links a{
+      color:var(--muted); text-decoration:none; font-weight:600; font-size:.95rem;
+      padding:8px 12px; border-radius:10px;
+    }
+    .nav-links a:hover{ color:var(--text); background: rgba(255,255,255,0.02); }
+
+
+
+
+    /* =========================
+       Hero
+       ========================= */
+    .hero{
+      display:grid; grid-template-columns: 1.1fr .9fr; gap:36px;
+      align-items:center; padding:28px 0 12px;
+    }
+    @media (max-width:960px){ .hero{ grid-template-columns: 1fr; } }
+
+    .hero-left h1{
+      font-family:Poppins; font-weight:800; font-size:clamp(2.2rem,4.4vw,3.4rem);
+      line-height:1.02;
+      margin-bottom:12px;
+    }
+    .hero-left p{
+      color:var(--muted); font-size:1.05rem; margin-bottom:18px;
+    }
+    .cta-row{ display:flex; gap:12px; flex-wrap:wrap; }
+    .btn{
+      padding:12px 18px; border-radius:999px; border:0; cursor:pointer; font-weight:700;
+      background: linear-gradient(135deg, var(--accent1), #77e1ff);
+      color:#071019; box-shadow: 0 12px 30px rgba(92,200,255,.12);
+      transition:transform .14s ease;
+    }
+    .btn:hover{ transform:translateY(-3px); }
+    .btn.secondary{
+      background: transparent; border:1px solid rgba(255,255,255,0.06); color:var(--text);
+    }
+
+    .hero-right{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:16px; padding:22px; box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,0.04);
+    }
+    .metrics{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+    @media (max-width:600px){ .metrics{ grid-template-columns: 1fr; } }
+    .metric{
+      background: rgba(255,255,255,0.02); padding:14px; border-radius:12px;
+      display:flex; gap:12px; align-items:center;
+    }
+    .metric .icon{
+      width:46px; height:46px; border-radius:10px; display:grid; place-items:center;
+      font-size:20px; color:#07070a; font-weight:800;
+    }
+    .metric h4{ margin:0; font-family:Poppins; font-size:1rem; }
+    .metric p{ margin:0; color:var(--muted); font-size:.95rem; }
+
+    /* =========================
+       Section base
+       ========================= */
+    section{
+      margin-top:28px;
+      border-radius:16px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.04);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+      overflow:hidden;
+    }
+    .section-inner{ padding:26px; }
+    .section-title{ font-family:Poppins; font-size:1.5rem; margin-bottom:10px; color:var(--accent1); }
+    .lead{ color:var(--muted); margin-bottom:14px; }
+
+    /* =========================
+       Grid utilities
+       ========================= */
+    .grid{
+      display:grid; gap:18px; grid-template-columns: repeat(12, 1fr);
+    }
+    .col-12{ grid-column: span 12; }
+    .col-6{ grid-column: span 6; }
+    .col-4{ grid-column: span 4; }
+    .col-3{ grid-column: span 3; }
+
+    @media (max-width:960px){
+      .col-6,.col-4,.col-3{ grid-column: span 12; }
+    }
+
+    /* =========================
+       Idea Cards (playful)
+       ========================= */
+    .idea-card{
+      padding:16px; border-radius:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.03);
+      transition: transform .16s ease, box-shadow .18s ease;
+    }
+    .idea-card:hover{ transform: translateY(-6px); box-shadow: 0 22px 44px rgba(0,0,0,0.6); }
+    .idea-emoji{ width:52px; height:52px; border-radius:12px; display:grid; place-items:center; font-size:22px; margin-bottom:10px; color:#07070a; }
+    .idea-title{ font-family:Poppins; margin-bottom:8px; }
+    .idea-desc{ color:var(--muted); font-size:.95rem; }
+
+    /* =========================
+       Success Carousel (simple)
+       ========================= */
+    .carousel{
+      display:flex; gap:12px; overflow:auto; padding-bottom:6px;
+      scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+    }
+    .case{
+      min-width:280px; flex:0 0 280px; scroll-snap-align:center;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:18px; border-radius:12px; border:1px solid rgba(255,255,255,0.03);
+    }
+    .case img{ width:100%; height:140px; object-fit:cover; border-radius:10px; margin-bottom:10px; }
+
+    /* =========================
+       Steps / Timeline
+       ========================= */
+    .steps{ display:flex; flex-direction:column; gap:12px; }
+    .step{
+      display:flex; gap:12px; align-items:flex-start; background: rgba(255,255,255,0.01);
+      padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,0.02);
+    }
+    .step .step-num{ width:46px; height:46px; border-radius:10px; display:grid; place-items:center; font-weight:800; background: linear-gradient(135deg,var(--accent1),var(--accent3)); color:#071019; }
+
+    /* =========================
+       Quote
+       ========================= */
+    .quote{
+      padding:18px; border-radius:12px; background: linear-gradient(135deg, rgba(112,240,166,0.06), rgba(92,200,255,0.04));
+      border:1px dashed rgba(255,255,255,0.05);
+    }
+
+    /* =========================
+       Like box (prominent)
+       ========================= */
+    .like-panel{
+      display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+      padding:12px; border-radius:12px; border:1px solid rgba(255,255,255,0.04);
+      background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+    }
+    .like-big{
+      display:flex; gap:12px; align-items:center;
+    }
+    .like-big button{
+      padding:12px 18px; border-radius:999px; border:0; cursor:pointer; font-weight:800;
+      background: linear-gradient(135deg, var(--accent2), #ffd678); color:#071019;
+      box-shadow: 0 12px 30px rgba(255,206,82,.12);
+    }
+    .like-count{ font-weight:800; font-family:Poppins; color:var(--text); }
+    
+
+    /* =========================
+       Footer
+       ========================= */
+    footer{
+      margin-top:36px; padding:26px 0; color:var(--muted); text-align:center;
+    }
+    .socials{ display:flex; gap:12px; justify-content:center; margin-top:12px; }
+    .socials a{ color:var(--muted); background: rgba(255,255,255,0.02); padding:10px 12px; border-radius:10px; text-decoration:none; }
+    .socials a:hover{ color:var(--text); transform:translateY(-4px); }
+
+    /* =========================
+       Small Helpers & Responsive Tidy-ups
+       ========================= */
+    .muted{ color:var(--muted); }
+    .small{ font-size:.9rem; color:var(--muted); }
+    img.responsive{ width:100%; height:auto; border-radius:10px; display:block; }
+
+    @media (max-width:520px){
+      .hero-left h1{ font-size:1.8rem; }
+      .nav-links{ display:none; }
+    }
+
+
+
+  </style>
+
+
+
+</head>
+<body data-aos-easing="ease-out-cubic" data-aos-duration="750" data-aos-delay="0">
+    
+  <!-- ---------- Top container / nav ---------- -->
+  <div class="container aos-init aos-animate" data-aos="fade-down">
+    <nav>
+      <div class="brand">
+        <div class="logo">K</div>
+        <div>
+          <div style="font-size:.9rem; opacity:.95">Kidpreneur</div>
+          <div class="small muted" style="margin-top:2px">Hub • Creative Kids, Smart Starts</div>
+        </div>
+      </div>
+
+      <div class="nav-links">
+        <a href="https://kidprenuer-eosin.vercel.app/#about">About</a>
+        <a href="https://kidprenuer-eosin.vercel.app/#ideas">Ideas</a>
+        <a href="https://kidprenuer-eosin.vercel.app/#stories">Stories</a>
+        <a href="https://kidprenuer-eosin.vercel.app/#steps">Steps</a>
+        <a href="iris.html">Open Iris</a>
+ 
+      </div>
+    </nav>
+
+    <!-- ---------- HERO ---------- -->
+    <div class="hero" style="margin-top:10px">
+      <div class="hero-left aos-init aos-animate" data-aos="fade-right">
+        <h1>Build <span style="color:var(--accent1)">big ideas</span> with a <span style="color:var(--accent3)">playful heart</span> and a <span style="color:var(--accent2)">pro mindset</span>.</h1>
+        <p>Kidpreneur Hub blends creativity and structure: project ideas, simple plans, and supportive steps to help young creators build confidence and real skills.</p>
+
+        <div class="cta-row">
+          <button class="btn" id="heroLike">👍 Like This Page</button>
+          <a class="btn secondary" href="https://kidprenuer-eosin.vercel.app/#ideas">Explore Ideas</a>
+        </div>
+
+        <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap">
+          <div style="padding:8px 12px; border-radius:999px; background:rgba(255,255,255,0.02); color:var(--muted); font-weight:600">Beginner-friendly</div>
+          <div style="padding:8px 12px; border-radius:999px; background:rgba(255,255,255,0.02); color:var(--muted); font-weight:600">Parent Approved</div>
+          <div style="padding:8px 12px; border-radius:999px; background:rgba(255,255,255,0.02); color:var(--muted); font-weight:600">No-cost ideas</div>
+        </div>
+      </div>
+
+      <aside class="hero-right aos-init aos-animate" data-aos="fade-left">
+        <div class="metrics">
+          <div class="metric">
+            <div class="icon" style="background:linear-gradient(135deg,var(--accent1),var(--accent3))">✨</div>
+            <div>
+              <h4>Creativity</h4>
+              <p>Practice creative projects and prototypes.</p>
+              <a href="https://en.wikipedia.org/wiki/Creativity">Read More</a>
+            </div>
+          </div>
+          <div class="metric">
+            <div class="icon" style="background:linear-gradient(135deg,var(--accent2),var(--accent1))">📈</div>
+            <div>
+              <h4>Real Progress</h4>
+              <p>Small steps each week build confidence.</p>
+              <a href="https://en.wikipedia.org/wiki/Progress">Read More</a>
+            </div>
+          </div>
+          <div class="metric">
+            <div class="icon" style="background:linear-gradient(135deg,var(--accent3),var(--accent2))">🧩</div>
+            <div>
+              <h4>Problem Solving</h4>
+              <p>Find tiny problems—and design tiny solutions.</p>
+              <a href="https://en.wikipedia.org/wiki/Problem_solving">Read More</a>
+            </div>
+          </div>
+          <div class="metric">
+            <div class="icon" style="background:linear-gradient(135deg,var(--green),var(--accent1))">🛡️</div>
+            <div>
+              <h4>Safe &amp; Kind</h4>
+              <p>Always with adult guidance and clear rules.</p>
+              <a href="https://en.wikipedia.org/wiki/Safety">Read More</a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- ---------- ABOUT ---------- -->
+  <section id="about" data-aos="fade-up" class="aos-init aos-animate">
+    <div class="section-inner container">
+      <div class="section-title">About Kidpreneur Hub</div>
+      <p class="lead">We provide simple steps, playful ideas, and practical tips for kids who want to start tiny ventures — from crafts to tech. Our goal is to help young creators learn by doing, safely and proudly.</p>
+      
+
+      <div class="grid" style="margin-top:14px">
+        <div class="col-6">
+          <div class="card">
+            <div style="display:flex; gap:12px; align-items:center">
+              <div class="idea-emoji" style="background:linear-gradient(135deg,var(--accent1),var(--accent3))">🎯</div>
+              <div>
+                <div style="font-weight:700">Start with curiosity</div>
+                <div class="muted small">Find a small need and invent a small solution — that’s a startup in miniature.</div>
+                <a href="https://en.wikipedia.org/wiki/Curiosity">Read More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="card">
+            <div style="display:flex; gap:12px; align-items:center">
+              <div class="idea-emoji" style="background:linear-gradient(135deg,var(--accent2),var(--green))">🧠</div>
+              <div>
+                <div style="font-weight:700">Learn by doing</div>
+                <div class="muted small">Make a prototype, ask five people, improve one thing — repeat.</div>
+                <a href="https://en.wikipedia.org/wiki/Learning">Read More</a>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- BENEFITS ---------- -->
+  <section data-aos="fade-up" class="aos-init aos-animate">
+    <div class="section-inner container">
+      <div class="section-title">Benefits for Kids</div>
+      <p class="lead">Kidpreneurship teaches communication, planning, and resilience — life skills that help in school and beyond.</p>
+      
+
+      <div class="grid" style="margin-top:12px">
+        <div class="col-4">
+          <div class="idea-card">
+            <div class="idea-emoji" style="background:linear-gradient(135deg,var(--accent1),var(--accent3))">🗣️</div>
+            <div class="idea-title">Communication</div>
+            <div class="idea-desc">Explain ideas clearly and listen to feedback with kindness.</div>
+            <a href="https://en.wikipedia.org/wiki/Communication">Read More</a>
+          </div>
+        </div>
+        
+
+        <div class="col-4">
+          <div class="idea-card">
+            <div class="idea-emoji" style="background:linear-gradient(135deg,var(--accent2),var(--accent1))">📆</div>
+            <div class="idea-title">Planning</div>
+            <div class="idea-desc">Break ideas into small tasks and set tiny deadlines.</div>
+           <a href="https://en.wikipedia.org/wiki/Planning">Read More</a>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="idea-card">
+            <div class="idea-emoji" style="background:linear-gradient(135deg,var(--accent3),var(--accent2))">💪</div>
+            <div class="idea-title">Resilience</div>
+            <div class="idea-desc">Learn from mistakes and improve step-by-step.</div>
+            <a href="https://en.wikipedia.org/wiki/Resilience_(engineering_and_construction)">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- IDEAS (with images) ---------- -->
+  <section id="ideas" data-aos="fade-up" class="aos-init aos-animate">
+    <div class="section-inner container">
+      <div class="section-title">Creative Ideas — Try One This Week</div>
+      <p class="lead">Short, doable ideas with low cost and big learning value. Ask an adult for help where needed.</p>
+
+      <div class="grid" style="margin-top:12px">
+        <div class="col-4">
+          <div class="idea-card">
+            <div class="idea-emoji" style="background:linear-gradient(135deg,var(--accent1),var(--accent2))">🎨</div>
+            <div class="idea-title">Handmade Crafts</div>
+            <div class="idea-desc">Cards, bookmarks, stickers. Sell at school fairs or online with help.</div>
+            <a href="https://en.wikipedia.org/wiki/Craft">Read More</a>
+            <img class="responsive" src="./Kidpreneur Hub — Creative Kids, Smart Starts_files/photo-1517694712202-14dd9538aa97" alt="handmade crafts">
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="idea-card">
+            <div class="idea-emoji" style="background:linear-gradient(135deg,var(--accent3),var(--accent1))">🍪</div>
+            <div class="idea-title">Baking &amp; Treats</div>
+            <div class="idea-desc">Bake simple cookies or snack packs for neighbors (with adult supervision).</div>
+            <a href="https://en.wikipedia.org/wiki/Baking">Read More</a>
+            <img class="responsive" src="./Kidpreneur Hub — Creative Kids, Smart Starts_files/photo-1540189549336-e6e99c3679fe" alt="baking treats">
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="idea-card">
+            <div class="idea-emoji" style="background:linear-gradient(135deg,var(--green),var(--accent2))">♻️</div>
+            <div class="idea-title">Eco Projects</div>
+            <div class="idea-desc">Make recycled planters, seed packets, or upcycled gifts for community events.</div>
+           <a href="https://en.wikipedia.org/wiki/Eco">Read More</a>
+            <img class="responsive" src="./Kidpreneur Hub — Creative Kids, Smart Starts_files/photo-1501004318641-b39e6451bec6" alt="eco projects">
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="idea-card">
+            <div class="idea-emoji" style="background:linear-gradient(135deg,var(--accent2),var(--accent3))">📚</div>
+            <div class="idea-title">Tutoring</div>
+            <div class="idea-desc">Teach reading, storytelling, or drawing to younger kids with fun games.</div>
+            <a href="https://en.wikipedia.org/wiki/Tutoring">Read More</a>
+            <img class="responsive" src="./Kidpreneur Hub — Creative Kids, Smart Starts_files/photo-1529156069898-49953e39b3ac" alt="tutoring kids">
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="idea-card">
+            <div class="idea-emoji" style="background:linear-gradient(135deg,var(--accent1),var(--accent3))">🐶</div>
+            <div class="idea-title">Pet Care</div>
+            <div class="idea-desc">Walk dogs, make pet treats or toys under adult supervision.</div>
+            <a href="https://en.wikipedia.org/wiki/Pet">Read More</a>
+            <img class="responsive" src="./Kidpreneur Hub — Creative Kids, Smart Starts_files/photo-1500917293891-ef795e70e1f6" alt="pet care">
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="idea-card">
+            <div class="idea-emoji" style="background:linear-gradient(135deg,var(--accent3),var(--accent2))">💻</div>
+            <div class="idea-title">Tiny Tech</div>
+            <div class="idea-desc">Create a simple website or mini-game with free tools and adult help.</div>
+            <a href="https://en.wikipedia.org/wiki/Technology">Read More</a>
+            <img class="responsive" src="./Kidpreneur Hub — Creative Kids, Smart Starts_files/photo-1516387938699-a93567ec168e" alt="tiny tech project">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+
+
+
+  <!--
+    Kidpreneur Playground (No Circuits, No WebGL)
+    Sections:
+      1) Header + Like Counter
+      2) Hero
+      3) Progress Tracker Dashboard
+      4) Dream Board (Sticky Notes)
+      5) Mini Business Game (Profit/Loss)
+      6) Drag-Drop Creativity Playground
+      7) Footer
+    Tech: Pure HTML/CSS/JS (works offline). Black theme. LocalStorage persistence.
+  -->
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title style="text-align: center;">Kidpreneur Playground</title>
+
+  <style>
+    :root{
+      --bg:#0b0b0c;
+      --surface:#111217;
+      --surface-2:#161821;
+      --text:#e7e7ea;
+      --muted:#a9adbd;
+      --brand:#ffcc00;
+      --accent:#ff4da6;
+      --teal:#00d0b3;
+      --sky:#5cc8ff;
+      --lime:#aaff7f;
+      --danger:#ff6b6b;
+      --ok:#2fe18b;
+      --warn:#ffb24d;
+      --shadow: 0 10px 30px rgba(0,0,0,.55);
+      --radius: 16px;
+      --radius-sm: 12px;
+      --radius-lg: 24px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 50% -200px, rgba(255,255,255,.06), rgba(0,0,0,0) 60%), var(--bg);
+      color:var(--text);
+      line-height:1.6;
+      letter-spacing:.2px;
+    }
+
+    a{color:var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .container{
+      width:100%;
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+
+    /* ================= Header ================= */
+    header{
+      position:sticky; top:0; z-index:50;
+      background:rgba(10,10,12,.7);
+      backdrop-filter: blur(8px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; font-weight:800;
+      letter-spacing:.6px;
+    }
+    .brand .logo{
+      width:36px;height:36px;border-radius:50%;
+      background: conic-gradient(from 220deg, var(--accent), var(--brand), var(--sky));
+      box-shadow:0 0 0 2px rgba(255,255,255,.08) inset, 0 6px 18px rgba(0,0,0,.5);
+    }
+    .navlinks{display:flex; gap:14px; flex-wrap:wrap}
+    .chip{
+      padding:8px 12px; border-radius:999px; background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08); font-size:.92rem
+    }
+    .chip:hover{background:rgba(255,255,255,.12)}
+    .likes{
+      display:flex; align-items:center; gap:10px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:999px; padding:6px 12px;
+      box-shadow: var(--shadow);
+    }
+    .like-btn{
+      all:unset; cursor:pointer; display:inline-flex; align-items:center; justify-content:center;
+      width:34px; height:34px; border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.25), rgba(255,255,255,0) 60%);
+    }
+    .like-btn:hover{transform:scale(1.06)}
+    .like-heart{
+      width:20px; height:20px; display:block;
+      filter: drop-shadow(0 0 10px rgba(255,77,166,.45));
+    }
+    .like-count{font-weight:800; color:var(--brand)}
+
+    /* ================= Hero ================= */
+    .hero{
+      padding:80px 0 36px;
+      text-align:center;
+    }
+    .title{
+      margin:0 0 12px;
+      font-size: clamp(2.2rem, 4.5vw + 1rem, 4.2rem);
+      font-weight:900;
+      text-align: center;
+      text-transform:uppercase;
+      letter-spacing:3px;
+      background: linear-gradient(92deg, var(--brand) 0%, #fff 25%, var(--sky) 60%, var(--accent) 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+      text-shadow: 0 10px 30px rgba(0,0,0,.6);
+    }
+    .subtitle{
+      max-width:900px; margin:0 auto; color:var(--muted); font-size:1.15rem;
+    }
+    .hero-cta{display:flex; gap:12px; justify-content:center; margin:26px 0 8px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; gap:10px; cursor:pointer;
+      padding:12px 18px; border-radius:12px; border:1px solid rgba(255,255,255,.1);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      color:#fff; font-weight:700; letter-spacing:.2px;
+      box-shadow:var(--shadow); transition: transform .12s ease, background .2s ease, border .2s ease;
+    }
+    .btn:hover{transform:translateY(-2px); background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.18)}
+    .btn.brand{background:linear-gradient(180deg, #2b2500, #171300); border-color:#3a3000}
+    .btn.brand:hover{background:linear-gradient(180deg, #3c3200, #221c00)}
+    .btn.accent{background:linear-gradient(180deg, #26101d, #160a12); border-color:#3d162b}
+    .btn.accent:hover{background:linear-gradient(180deg, #341528, #1b0c15)}
+
+    /* ================= Section shells ================= */
+    section{padding:56px 0}
+    .section-head{margin-bottom:22px; text-align:center}
+    .section-head h2{margin:0 0 10px; font-size:1.9rem}
+    .section-head p{margin:0; color:var(--muted)}
+
+    /* ================= Cards & grids ================= */
+    .grid{
+      display:grid; gap:16px;
+      grid-template-columns: repeat(12, 1fr);
+    }
+    .card{
+      grid-column: span 12;
+      background: var(--surface);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    @media (min-width:768px){
+      .col-6{grid-column: span 6}
+      .col-4{grid-column: span 4}
+      .col-8{grid-column: span 8}
+      .col-3{grid-column: span 3}
+    }
+
+    /* ================= Progress Dashboard ================= */
+    .kpi{
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:14px; padding:16px;
+    }
+    .kpi h3{margin:0; font-size:1rem; color:var(--muted); font-weight:600}
+    .kpi .value{font-size:1.8rem; font-weight:900}
+    .bar{
+      height:12px; background:#0e1016; border:1px solid rgba(255,255,255,.08);
+      border-radius:999px; overflow:hidden;
+    }
+    .bar>span{
+      display:block; height:100%; width:0%;
+      background:linear-gradient(90deg, var(--teal), var(--sky), var(--brand));
+      transition: width .5s ease;
+    }
+    .badges{display:flex; gap:12px; flex-wrap:wrap}
+    .badge{
+      padding:7px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.1);
+      background:rgba(255,255,255,.05); font-size:.9rem; color:#fff; display:inline-flex; align-items:center; gap:8px;
+    }
+    .badge.locked{opacity:.45; filter:grayscale(1)}
+    .mini{font-size:.85rem; color:var(--muted)}
+
+    /* ================= Dream Board ================= */
+    .dream-form{display:grid; gap:10px}
+    .input, .textarea, select{
+      width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.1);
+      background:#0d0f16; color:#fff; outline:none;
+    }
+    .textarea{min-height:110px; resize:vertical}
+    .sticky-grid{
+      display:grid; gap:14px;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+    .sticky{
+      position:relative; padding:14px 14px 18px;
+      border-radius:12px;
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.1);
+      box-shadow: var(--shadow);
+      transform: rotate(var(--r,0deg));
+    }
+    .sticky .tag{display:inline-block; font-size:.78rem; color:#0b0b0c; font-weight:800;
+      background:var(--tag,#ffd966); padding:6px 10px; border-radius:999px}
+    .sticky .name{margin:8px 0 4px; font-weight:800}
+    .sticky .dream{color:#d9dce8}
+    .sticky .del{
+      position:absolute; top:10px; right:10px; border:none; border-radius:999px; cursor:pointer;
+      background:rgba(0,0,0,.35); color:#fff; width:28px; height:28px
+    }
+    .counter{color:var(--muted); font-size:.95rem}
+
+    /* ================= Business Game ================= */
+    .game-wrap{display:grid; gap:16px}
+    @media(min-width:900px){ .game-wrap{grid-template-columns: 320px 1fr} }
+    .balance{
+      font-size:2rem; font-weight:900; color:#fff; margin:4px 0 8px;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius:999px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08)
+    }
+    .table{
+      width:100%; border-collapse: collapse; border-spacing:0; overflow:hidden;
+      border-radius:12px; border:1px solid rgba(255,255,255,.08);
+    }
+    .table th, .table td{padding:10px 12px; border-bottom:1px solid rgba(255,255,255,.06); text-align:left}
+    .table tr:hover{background:rgba(255,255,255,.04)}
+    .log{
+      max-height:240px; overflow:auto; background:#0e1118; border:1px solid rgba(255,255,255,.08);
+      border-radius:12px; padding:10px
+    }
+
+    /* ================= Drag & Drop Playground ================= */
+    .workspace{
+      background: repeating-linear-gradient(0deg, #0f121a, #0f121a 28px, #0c0f17 28px, #0c0f17 56px);
+      border:1px dashed rgba(255,255,255,.12);
+      border-radius:16px; min-height:360px; position:relative; overflow:hidden;
+      box-shadow: var(--shadow);
+    }
+    .toolbox{display:flex; gap:10px; flex-wrap:wrap}
+    .tool{
+      user-select:none; display:flex; gap:8px; align-items:center; padding:8px 12px;
+      border-radius:999px; border:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.06); cursor:grab
+    }
+    .node{
+      position:absolute; left:20px; top:20px; transform:translate(-50%,-50%);
+      display:flex; align-items:center; gap:10px; padding:8px 12px; border-radius:12px;
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.12); cursor:grab; box-shadow: var(--shadow);
+    }
+    .node .x{
+      border:none; background:rgba(0,0,0,.35); color:#fff; width:24px; height:24px; border-radius:6px; cursor:pointer
+    }
+    .hint{color:var(--muted); font-size:.9rem}
+
+    /* ================= Footer ================= */
+    footer{
+      padding:46px 0 60px; text-align:center; color:var(--muted);
+      border-top:1px solid rgba(255,255,255,.08); margin-top:40px
+    }
+
+    /* Small helpers */
+    .mt-8{margin-top:8px} .mt-12{margin-top:12px} .mt-16{margin-top:16px}
+    .mt-20{margin-top:20px} .mt-24{margin-top:24px} .mt-30{margin-top:30px}
+    .row{display:flex; gap:10px; flex-wrap:wrap}
+    .right{margin-left:auto}
+  </style>
+
+
+
+  <!-- ========================= HEADER ========================= -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>Kidpreneur <span style="color:var(--brand)">Playground</span></div>
+      </div>
+      <nav class="navlinks">
+        <a class="chip" href="https://kidprenuer-eosin.vercel.app/#dashboard">Dashboard</a>
+        <a class="chip" href="https://kidprenuer-eosin.vercel.app/#dreams">Dream Board</a>
+        <a class="chip" href="https://kidprenuer-eosin.vercel.app/#game">Business Game</a>
+        <a class="chip" href="https://kidprenuer-eosin.vercel.app/#playground">Playground</a>
+      </nav>
+      <div class="likes" title="How many people liked this page">
+        <button class="like-btn" id="likeBtn" aria-label="Like">
+          <svg class="like-heart" viewBox="0 0 24 24" fill="#ff4da6" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 21s-5.052-3.754-7.778-6.48C1.497 11.796 1.5 8.5 3.757 6.243 6.013 3.986 9.31 3.983 11.566 6.24L12 6.676l.434-.436c2.256-2.257 5.553-2.254 7.809-.001 2.257 2.257 2.26 5.553-.465 8.277C17.052 17.246 12 21 12 21z"></path>
+          </svg>
+        </button>
+        <span class="mini">Likes</span>
+        <strong class="like-count" id="likeCount">0 people liked this</strong>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================= HERO ========================= -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="title">Build • Learn • Lead</h1>
+      <p class="subtitle" style="text-align: center;">
+        A creative space for young founders to practice real-world skills — set goals, track progress,
+        share dreams, manage a mini business, and design freely. All on a sleek black canvas.
+      </p>
+      <div class="hero-cta">
+        <a href="https://kidprenuer-eosin.vercel.app/#dreams" class="btn brand">🌟 Share Your Dream</a>
+        <a href="https://kidprenuer-eosin.vercel.app/#game" class="btn accent">💰 Try the Business Game</a>
+        <a href="https://kidprenuer-eosin.vercel.app/#playground" class="btn">🧩 Open Playground</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= PROGRESS DASHBOARD ========================= -->
+  <section id="dashboard">
+    <div class="container">
+      <div class="section-head">
+        <h2>📈 Progress Tracker Dashboard</h2>
+        <p>Earn stars, hit goals, and unlock badges as you explore Kidpreneur activities.</p>
+      </div>
+
+      <div class="grid">
+        <!-- KPIs -->
+        <div class="card col-4">
+          <div class="kpi">
+            <div>
+              <h3>Total Stars</h3>
+              <div class="value" id="kpiStars">0 ⭐</div>
+            </div>
+            <span class="pill">Target: <strong id="kpiTarget">50</strong></span>
+          </div>
+          <div class="mt-12 bar" aria-label="Star progress">
+            <span id="starsBar" style="width:0%"></span>
+          </div>
+          <div class="mini mt-8">Complete activities to earn stars. Buttons below add stars instantly (demo).</div>
+          <div class="row mt-12">
+            <button class="btn" id="add5">+5 ⭐</button>
+            <button class="btn" id="add10">+10 ⭐</button>
+            <button class="btn" id="resetStars">Reset</button>
+            <span class="right mini">Saved locally</span>
+          </div>
+        </div>
+
+        <!-- Today Goals -->
+        <div class="card col-4">
+          <h3 style="margin:0 0 8px">🎯 Today’s Goals</h3>
+          <ul style="margin:0 0 12px 18px; padding:0; color:var(--muted)">
+            <li>Write 1 new idea</li>
+            <li>Post 1 dream</li>
+            <li>Play 1 round of the business game</li>
+          </ul>
+          <div class="bar"><span id="goalBar" style="width:0%"></span></div>
+          <div class="row mt-12">
+            <button class="btn" data-goal="idea">✓ Idea</button>
+            <button class="btn" data-goal="dream">✓ Dream</button>
+            <button class="btn" data-goal="game">✓ Game</button>
+            <span class="right mini">Progress: <strong id="goalPct">0%</strong></span>
+          </div>
+        </div>
+
+        <!-- Badges -->
+        <div class="card col-4">
+          <h3 style="margin:0 0 10px">🏅 Badges</h3>
+          <div class="badges" id="badges">
+            <span class="badge locked" data-need="10">⭐ Starter (10)</span>
+            <span class="badge locked" data-need="25">🚀 Builder (25)</span>
+            <span class="badge locked" data-need="40">💡 Innovator (40)</span>
+            <span class="badge locked" data-need="50">👑 Kidpreneur Pro (50)</span>
+          </div>
+          <p class="mini mt-12">Badges unlock automatically as your stars increase.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= DREAM BOARD ========================= -->
+  <section id="dreams">
+    <div class="container">
+      <div class="section-head">
+        <h2>🌠 Dream Board</h2>
+        <p>Tell the world what you want to become. Dreams appear as colorful sticky notes.</p>
+      </div>
+
+      <div class="grid">
+        <!-- Form -->
+        <div class="card col-4">
+          <h3 style="margin:0 0 8px">Share Your Dream</h3>
+          <form class="dream-form" id="dreamForm">
+            <input class="input" id="dreamName" placeholder="Your name" required="">
+            <select id="dreamTag" class="input" required="">
+              <option value="" disabled="" selected="">Choose a category</option>
+              <option>Scientist</option>
+              <option>Artist</option>
+              <option>Engineer</option>
+              <option>Coder</option>
+              <option>Chef</option>
+              <option>Athlete</option>
+              <option>Entrepreneur</option>
+              <option>Doctor</option>
+              <option>Teacher</option>
+              <option>Other</option>
+            </select>
+            <textarea class="textarea" id="dreamText" placeholder="I want to become..." required=""></textarea>
+            <button class="btn brand" type="submit">Post Dream</button>
+          </form>
+          <p class="counter mt-12">Total dreams: <strong id="dreamCount">0</strong></p>
+          <div class="row mt-12">
+            <button class="btn" id="exportDreams">Export JSON</button>
+            <button class="btn" id="clearDreams">Clear All</button>
+          </div>
+        </div>
+
+        <!-- Board -->
+        <div class="card col-8">
+          <div class="row" style="justify-content:space-between; align-items:center">
+            <h3 style="margin:0">Wall of Dreams</h3>
+            <span class="mini">Click ❌ to remove a note</span>
+          </div>
+          <div class="mt-16 sticky-grid" id="dreamBoard"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= MINI BUSINESS GAME ========================= -->
+  <section id="game">
+    <div class="container">
+      <div class="section-head">
+        <h2>💼 Mini Business Game</h2>
+        <p>Start with some cash, invest in a product, and see your daily profit or loss.</p>
+      </div>
+
+      <div class="game-wrap">
+        <!-- Sidebar controls -->
+        <div class="card">
+          <h3 style="margin:0">Your Business</h3>
+          <div class="balance" id="cash">₹ 1,000</div>
+          <div class="row">
+            <span class="pill">Inventory: <strong id="stock">0</strong></span>
+            <span class="pill">Day: <strong id="day">1</strong></span>
+          </div>
+
+          <h4 class="mt-16" style="margin:0 0 6px">Invest</h4>
+          <div class="row">
+            <button class="btn" data-buy="lemon">🍋 Buy Lemonade (₹20)</button>
+            <button class="btn" data-buy="toy">🧸 Buy Toy (₹60)</button>
+            <button class="btn" data-buy="bag">🛍️ Buy Bag (₹120)</button>
+          </div>
+
+          <h4 class="mt-16" style="margin:0 0 6px">Set Selling Price</h4>
+          <div class="row">
+            <input class="input" id="price" type="number" value="50" min="1" style="max-width:140px">
+            <button class="btn brand" id="nextDay">▶ Run Next Day</button>
+          </div>
+
+          <p class="mini mt-12">Demand is random each day. Higher price ⇒ fewer buyers. Keep an eye on cash!</p>
+
+          <div class="mt-16 bar"><span id="repBar" style="width:40%"></span></div>
+          <p class="mini">Reputation (affects demand)</p>
+
+          <div class="row mt-12">
+            <button class="btn" id="saveGame">💾 Save</button>
+            <button class="btn" id="resetGame">♻ Reset</button>
+          </div>
+        </div>
+
+        <!-- Main panel -->
+        <div class="card">
+          <div class="row" style="justify-content:space-between; align-items:flex-end">
+            <div>
+              <h3 style="margin:0">Results</h3>
+              <p class="mini">History of your business days</p>
+            </div>
+            <div class="pill">Total Profit: <strong id="profit">₹ 0</strong></div>
+          </div>
+
+          <table class="table mt-12" id="history">
+            <thead>
+              <tr>
+                <th>Day</th>
+                <th>Sold</th>
+                <th>Price</th>
+                <th>Revenue</th>
+                <th>Cost</th>
+                <th>Profit</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+
+          <h4 class="mt-20" style="margin:0 0 8px">Event Log</h4>
+          <div class="log" id="log"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= DRAG-DROP PLAYGROUND ========================= -->
+  <section id="playground">
+    <div class="container">
+      <div class="section-head">
+        <h2>🧩 Creativity Playground</h2>
+        <p>Drag items into the workspace to design your own scene. Positions are saved.</p>
+      </div>
+
+      <div class="card">
+        <div class="row" style="justify-content:space-between; align-items:center">
+          <div class="toolbox" id="toolbox">
+            <div class="tool" draggable="true" data-icon="🚀" data-color="#ffcc00">🚀 Rocket</div>
+            <div class="tool" draggable="true" data-icon="💡" data-color="#5cc8ff">💡 Idea</div>
+            <div class="tool" draggable="true" data-icon="🛍️" data-color="#ff76b0">🛍️ Shop</div>
+            <div class="tool" draggable="true" data-icon="📦" data-color="#aaff7f">📦 Product</div>
+            <div class="tool" draggable="true" data-icon="🎯" data-color="#ffd966">🎯 Goal</div>
+          </div>
+          <div class="row">
+            <button class="btn" id="exportLayout">Export Layout</button>
+            <button class="btn" id="clearLayout">Clear Workspace</button>
+          </div>
+        </div>
+
+        <div class="mt-16 workspace" id="workspace" aria-label="Design area"></div>
+        <p class="hint mt-12">Tip: drag icons from the toolbox into the workspace. Drag inside to move. Click ✖ to remove.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= FOOTER ========================= -->
+  <footer>
+    <div class="container">
+      <div>© 2025 Kidpreneur Playground • Built for learning on a clean black canvas.</div>
+      <div class="mt-8">Made with ❤️ + HTML • CSS • JavaScript</div>
+    </div>
+  </footer>
+
+  <!-- ========================= SCRIPTS ========================= -->
+  <script>
+    // -------------- Utilities --------------
+    const $ = sel => document.querySelector(sel);
+    const $$ = sel => Array.from(document.querySelectorAll(sel));
+    const clamp = (v,min,max)=> Math.max(min, Math.min(max, v));
+    const num = v => Number.parseInt(v,10) || 0;
+
+    // -------------- Likes (header) --------------
+    (function initLikes(){
+      const key='kp_likes';
+      const countEl = $('#likeCount');
+      const btn = $('#likeBtn');
+      let count = num(localStorage.getItem(key) || '0');
+      countEl.textContent = count.toString();
+      btn.addEventListener('click', ()=>{
+        count++;
+        localStorage.setItem(key, String(count));
+        countEl.textContent = count.toString();
+        btn.animate([{transform:'scale(1)'},{transform:'scale(1.24)'},{transform:'scale(1)'}],{duration:220});
+      });
+    })();
+
+    // -------------- Progress Dashboard --------------
+    (function initProgress(){
+      const starsKey='kp_stars';
+      const goalsKey='kp_goals';
+      const target=50;
+
+      const kpiStars=$('#kpiStars');
+      const kpiTarget=$('#kpiTarget');
+      const starsBar=$('#starsBar');
+      const goalBar=$('#goalBar');
+      const goalPct=$('#goalPct');
+      const badgesWrap=$('#badges');
+
+      kpiTarget.textContent = target;
+
+      let stars = num(localStorage.getItem(starsKey) || '0');
+      let goals = JSON.parse(localStorage.getItem(goalsKey) || '{"idea":false,"dream":false,"game":false}');
+
+      function render(){
+        kpiStars.textContent = stars + ' ⭐';
+        const pct = clamp(Math.round((stars/target)*100),0,100);
+        starsBar.style.width = pct + '%';
+        // badges
+        $$('#badges .badge').forEach(b=>{
+          const need=num(b.dataset.need);
+          if(stars>=need){ b.classList.remove('locked'); }
+          else{ b.classList.add('locked'); }
+        });
+        // goals
+        const gDone = Object.values(goals).filter(Boolean).length;
+        const gPct = Math.round(gDone/3*100);
+        goalBar.style.width = gPct + '%';
+        goalPct.textContent = gPct + '%';
+      }
+      render();
+
+      // Add stars buttons
+      $('#add5').onclick = ()=>{ stars += 5; localStorage.setItem(starsKey, stars); render(); toast('Added +5 ⭐'); };
+      $('#add10').onclick= ()=>{ stars +=10; localStorage.setItem(starsKey, stars); render(); toast('Added +10 ⭐'); };
+      $('#resetStars').onclick=()=>{ stars = 0; localStorage.setItem(starsKey, stars); render(); toast('Stars reset'); };
+
+      // Goals
+      $$('[data-goal]').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const g=btn.dataset.goal;
+          goals[g]=true;
+          localStorage.setItem(goalsKey, JSON.stringify(goals));
+          render();
+          toast('Marked ' + g + ' ✓');
+        });
+      });
+    })();
+
+    // -------------- Dream Board --------------
+    (function initDreams(){
+      const key='kp_dreams_v1';
+      const board = $('#dreamBoard');
+      const countEl = $('#dreamCount');
+      const form = $('#dreamForm');
+      const nameEl = $('#dreamName');
+      const tagEl = $('#dreamTag');
+      const textEl= $('#dreamText');
+
+      const tags = {
+        'Scientist':'#ffd966',
+        'Artist':'#ffb3d9',
+        'Engineer':'#b6ffb3',
+        'Coder':'#b3e6ff',
+        'Chef':'#ffddb3',
+        'Athlete':'#b3ffc9',
+        'Entrepreneur':'#ffe29a',
+        'Doctor':'#f8c5ff',
+        'Teacher':'#c9d5ff',
+        'Other':'#e7e7ea'
+      };
+
+      let dreams = JSON.parse(localStorage.getItem(key) || '[]');
+
+      function render(){
+        board.innerHTML='';
+        dreams.forEach((d, i)=>{
+          const card = document.createElement('div');
+          card.className='sticky';
+          card.style.setProperty('--r', (Math.random()*.6 - .3) + 'deg');
+          card.innerHTML=`
+            <button class="del" title="Remove">❌</button>
+            <span class="tag" style="--tag:${tags[d.tag]||'#ffd966'}">${d.tag}</span>
+            <div class="name">${escapeHTML(d.name)}</div>
+            <div class="dream">${escapeHTML(d.text)}</div>
+          `;
+          card.querySelector('.del').addEventListener('click', ()=>{
+            dreams.splice(i,1);
+            save();
+            toast('Dream removed');
+          });
+          board.appendChild(card);
+        });
+        countEl.textContent = String(dreams.length);
+      }
+      function save(){
+        localStorage.setItem(key, JSON.stringify(dreams));
+        render();
+      }
+      render();
+
+      form.addEventListener('submit', e=>{
+        e.preventDefault();
+        const name = nameEl.value.trim();
+        const tag  = tagEl.value;
+        const text = textEl.value.trim();
+        if(!name || !tag || !text){ return; }
+        dreams.unshift({name, tag, text, t: Date.now()});
+        save();
+        form.reset();
+        toast('Dream posted 🌟');
+        // Bonus: small star reward
+        try{
+          const starsKey='kp_stars';
+          const now = Number(localStorage.getItem(starsKey) || '0') + 5;
+          localStorage.setItem(starsKey, String(now));
+        }catch(e){}
+      });
+
+      $('#exportDreams').addEventListener('click', ()=>{
+        const blob = new Blob([JSON.stringify(dreams,null,2)], {type:'application/json'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = 'kidpreneur-dreams.json'; a.click();
+        URL.revokeObjectURL(url);
+      });
+
+      $('#clearDreams').addEventListener('click', ()=>{
+        if(confirm('Delete all dreams?')){ dreams=[]; save(); }
+      });
+
+      function escapeHTML(s){ return s.replace(/[&<>"']/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+    })();
+
+    // -------------- Business Game --------------
+    (function initGame(){
+      const key='kp_game_v1';
+      const cashEl=$('#cash');
+      const stockEl=$('#stock');
+      const dayEl=$('#day');
+      const priceEl=$('#price');
+      const histBody=$('#history tbody');
+      const log=$('#log');
+      const profitEl=$('#profit');
+      const repBar=$('#repBar');
+
+      let state = JSON.parse(localStorage.getItem(key) || '{}');
+      if(!state.cash){ state = { cash:1000, stock:0, day:1, price:50, profit:0, rep:40, history:[] }; }
+
+      function fmt(n){ return '₹ ' + n.toLocaleString('en-IN'); }
+      function render(){
+        cashEl.textContent = fmt(state.cash);
+        stockEl.textContent= state.stock;
+        dayEl.textContent  = state.day;
+        priceEl.value      = state.price;
+        profitEl.textContent = fmt(state.profit);
+        repBar.style.width = clamp(state.rep,0,100) + '%';
+
+        histBody.innerHTML='';
+        state.history.slice(-50).forEach(r=>{
+          const tr=document.createElement('tr');
+          tr.innerHTML = `
+            <td>${r.day}</td>
+            <td>${r.sold}</td>
+            <td>${fmt(r.price)}</td>
+            <td>${fmt(r.revenue)}</td>
+            <td>${fmt(r.cost)}</td>
+            <td style="color:${r.profit>=0?'#2fe18b':'#ff6b6b'}">${fmt(r.profit)}</td>
+          `;
+          histBody.appendChild(tr);
+        });
+      }
+      function save(){ localStorage.setItem(key, JSON.stringify(state)); render(); }
+
+      render();
+
+      // Buying
+      $$('[data-buy]').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const type = btn.dataset.buy;
+          let cost=0, qty=0;
+          if(type==='lemon'){ cost=20; qty=5; }
+          if(type==='toy'){ cost=60; qty=3; }
+          if(type==='bag'){ cost=120; qty=2; }
+          if(state.cash < cost){ toast('Not enough cash', 'warn'); return; }
+          state.cash -= cost;
+          state.stock+= qty;
+          logLine(`Bought ${qty} units (${type}) for ${fmt(cost)}.`);
+          state.rep = clamp(state.rep + 1, 0, 100);
+          save();
+        });
+      });
+
+      // Next day simulation
+      $('#nextDay').addEventListener('click', ()=>{
+        state.price = Math.max(1, num(priceEl.value));
+        // Demand: base 10..25, reduced by price factor, boosted by rep
+        const base = 10 + Math.floor(Math.random()*16);         // 10-25
+        const priceFactor = clamp(60 / state.price, 0.3, 2.2);  // higher price -> less demand
+        const repFactor = 0.6 + (state.rep/100)*0.8;            // 0.6 - 1.4
+        let demand = Math.round(base * priceFactor * repFactor);
+        let sold = Math.min(demand, state.stock);
+        let revenue = sold * state.price;
+        let cost = 0; // cost already paid when buying
+        let profit = revenue - cost;
+        state.cash += revenue;
+        state.stock -= sold;
+        state.profit += profit;
+        state.history.push({day:state.day, sold, price:state.price, revenue, cost, profit});
+        logLine(`Day ${state.day}: Sold ${sold} @ ${fmt(state.price)}. Revenue ${fmt(revenue)}. Profit ${fmt(profit)}.`);
+        state.day++;
+        // reputation adjusts
+        if(sold===0){ state.rep = clamp(state.rep - 6, 0, 100); }
+        else { state.rep = clamp(state.rep + 2, 0, 100); }
+        save();
+        // bonus stars for playing
+        try{
+          const starsKey='kp_stars'; const now = Number(localStorage.getItem(starsKey)||'0') + 3;
+          localStorage.setItem(starsKey, String(now));
+        }catch(e){}
+      });
+
+      // Save/Reset
+      $('#saveGame').onclick = ()=>{ save(); toast('Game saved 💾'); };
+      $('#resetGame').onclick= ()=>{
+        if(!confirm('Reset your business?')) return;
+        state = { cash:1000, stock:0, day:1, price:50, profit:0, rep:40, history:[] };
+        save(); toast('Game reset');
+      };
+
+      function logLine(t){
+        const p=document.createElement('div'); p.textContent = t;
+        log.prepend(p);
+      }
+    })();
+
+    // -------------- Drag & Drop Playground --------------
+    (function initPlayground(){
+      const key='kp_layout_v1';
+      const ws = $('#workspace');
+      const toolbox = $('#toolbox');
+
+      ws.addEventListener('dragover', e=> e.preventDefault());
+      toolbox.querySelectorAll('.tool').forEach(t=>{
+        t.addEventListener('dragstart', e=>{
+          e.dataTransfer.setData('text/plain', JSON.stringify({
+            icon: t.dataset.icon, color: t.dataset.color
+          }));
+        });
+      });
+
+      ws.addEventListener('drop', e=>{
+        e.preventDefault();
+        const data = JSON.parse(e.dataTransfer.getData('text/plain') || '{}');
+        if(!data.icon) return;
+        const rect = ws.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        addNode(data.icon, data.color, x, y);
+        persist();
+      });
+
+      function addNode(icon, color, x, y){
+        const n=document.createElement('div');
+        n.className='node';
+        n.style.left = x + 'px';
+        n.style.top  = y + 'px';
+        n.innerHTML = `
+          <span style="font-size:20px">${icon}</span>
+          <span style="font-weight:800">${label(icon)}</span>
+          <button class="x" title="Remove">✖</button>
+        `;
+        n.style.borderColor = hexAlpha(color, .35);
+        n.style.boxShadow = `0 8px 20px ${hexAlpha(color, .2)}`;
+        ws.appendChild(n);
+
+        // drag inside workspace
+        let dragging=false, offX=0, offY=0;
+        n.addEventListener('mousedown', (ev)=>{
+          if(ev.target.classList.contains('x')) return;
+          dragging=true; n.style.cursor='grabbing';
+          const r = n.getBoundingClientRect();
+          offX = ev.clientX - r.left;
+          offY = ev.clientY - r.top;
+        });
+        window.addEventListener('mousemove', (ev)=>{
+          if(!dragging) return;
+          const rect = ws.getBoundingClientRect();
+          const nx = clamp(ev.clientX - rect.left - offX + n.offsetWidth/2, 0, ws.clientWidth);
+          const ny = clamp(ev.clientY - rect.top  - offY + n.offsetHeight/2, 0, ws.clientHeight);
+          n.style.left = nx + 'px';
+          n.style.top  = ny + 'px';
+        });
+        window.addEventListener('mouseup', ()=>{
+          if(dragging){ dragging=false; n.style.cursor='grab'; persist(); }
+        });
+
+        // remove
+        n.querySelector('.x').addEventListener('click', ()=>{
+          n.remove(); persist(); toast('Removed item');
+        });
+      }
+
+      function label(icon){
+        return ({
+          '🚀':'Rocket', '💡':'Idea', '🛍️':'Shop', '📦':'Product', '🎯':'Goal'
+        })[icon] || 'Item';
+      }
+
+      function persist(){
+        const nodes = [...ws.querySelectorAll('.node')].map(n=>{
+          return {
+            icon: n.querySelector('span').textContent.trim(),
+            label: n.querySelectorAll('span')[1].textContent.trim(),
+            x: parseInt(n.style.left,10),
+            y: parseInt(n.style.top,10)
+          };
+        });
+        localStorage.setItem(key, JSON.stringify(nodes));
+      }
+
+      function restore(){
+        try{
+          const data = JSON.parse(localStorage.getItem(key) || '[]');
+          data.forEach(d=> addNode(d.icon, '#5cc8ff', d.x, d.y));
+        }catch(e){}
+      }
+      restore();
+
+      $('#exportLayout').addEventListener('click', ()=>{
+        const json = localStorage.getItem(key) || '[]';
+        const blob = new Blob([json], {type:'application/json'});
+        const url = URL.createObjectURL(blob);
+        const a=document.createElement('a');
+        a.href=url; a.download='kidpreneur-playground-layout.json'; a.click();
+        URL.revokeObjectURL(url);
+      });
+      $('#clearLayout').addEventListener('click', ()=>{
+        if(!confirm('Clear workspace?')) return;
+        ws.innerHTML=''; localStorage.removeItem(key);
+      });
+
+      function hexAlpha(hex, a){
+        // hex like #ffcc00
+        const c = hex.replace('#','');
+        const r = parseInt(c.substring(0,2),16);
+        const g = parseInt(c.substring(2,4),16);
+        const b = parseInt(c.substring(4,6),16);
+        return `rgba(${r},${g},${b},${a})`;
+      }
+    })();
+
+    // -------------- Toasts (tiny notifications) --------------
+    (function setupToasts(){
+      const host = document.createElement('div');
+      host.style.position='fixed';
+      host.style.bottom='16px';
+      host.style.right='16px';
+      host.style.display='grid';
+      host.style.gap='10px';
+      host.style.zIndex='9999';
+      document.body.appendChild(host);
+      window.toast = function(msg, type){
+        const el = document.createElement('div');
+        el.textContent = msg;
+        el.style.padding='10px 14px';
+        el.style.border='1px solid rgba(255,255,255,.12)';
+        el.style.borderRadius='12px';
+        el.style.boxShadow='var(--shadow)';
+        el.style.background = type==='warn' ? 'rgba(255, 178, 77, .12)' : 'rgba(47, 225, 139, .12)';
+        el.style.color = '#fff';
+        host.prepend(el);
+        setTimeout(()=>{ el.style.opacity='.0'; el.style.transform='translateY(6px)'; }, 2200);
+        setTimeout(()=> el.remove(), 2800);
+      }
+    })();
+  </script><div style="position: fixed; bottom: 16px; right: 16px; display: grid; gap: 10px; z-index: 9999;"></div>
+
+
+
+
+  
+<section id="dashboard" style="margin-top:28px;">
+  <div class="section-inner container" style="padding:22px;">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:18px; flex-wrap:wrap;">
+      <div style="flex:1 1 60%;">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+          <div style="width:56px; height:56px; border-radius:12px; display:grid; place-items:center; font-weight:800;
+                      background: linear-gradient(135deg, #5cc8ff, #ff76b0); color:#071019; box-shadow: 0 12px 30px rgba(92,200,255,.10);">
+            📊
+          </div>
+          <div>
+            <div style="font-family:Poppins; font-weight:700; font-size:1.15rem;">Live Dashboard</div>
+            <div style="color:#9aa0ad; font-size:.95rem;">Track profit, customers, and goals. Celebrate wins with badges.</div>
+          </div>
+        </div>
+
+        <!-- Cards grid -->
+        <div style="display:grid; gap:12px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+          <!-- Profit card -->
+          <div style="background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01)); border-radius:12px; padding:14px; border:1px solid rgba(255,255,255,0.04);">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <div>
+                <div style="color:#ffce52; font-weight:800; font-size:.95rem;">Profit</div>
+                <div id="profitValue" style="font-family:Poppins; font-size:1.45rem; margin-top:8px;">₹ 1,240</div>
+                <div style="color:#9aa0ad; font-size:.9rem; margin-top:6px;">This month</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="background:#071019; padding:8px 10px; border-radius:10px; color:#70f0a6; font-weight:800;">▲ +12%</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Customers card -->
+          <div style="background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01)); border-radius:12px; padding:14px; border:1px solid rgba(255,255,255,0.04);">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <div>
+                <div style="color:#5cc8ff; font-weight:800; font-size:.95rem;">Customers</div>
+                <div id="customersValue" style="font-family:Poppins; font-size:1.45rem; margin-top:8px;">86</div>
+                <div style="color:#9aa0ad; font-size:.9rem; margin-top:6px;">Happy buyers</div>
+              </div>
+              <div>
+                <div style="background:#071019; padding:8px 10px; border-radius:10px; color:#ff76b0; font-weight:800;">New</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Streak card -->
+          <div style="background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01)); border-radius:12px; padding:14px; border:1px solid rgba(255,255,255,0.04);">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <div>
+                <div style="color:#ff76b0; font-weight:800; font-size:.95rem;">Streak</div>
+                <div id="streakValue" style="font-family:Poppins; font-size:1.45rem; margin-top:8px;">14 days</div>
+                <div style="color:#9aa0ad; font-size:.9rem; margin-top:6px;">Keep learning</div>
+              </div>
+              <div>
+                <div style="background:#071019; padding:8px 10px; border-radius:10px; color:#ffd678; font-weight:800;">🔥</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Badges / achievements -->
+        <div style="margin-top:12px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <div style="background:linear-gradient(135deg,#5cc8ff,#ff76b0); padding:8px 12px; border-radius:999px; color:#071019; font-weight:800;">🏆 Top Seller</div>
+          <div style="background:linear-gradient(135deg,#ffce52,#ffd678); padding:8px 12px; border-radius:999px; color:#071019; font-weight:800;">🌱 Green Project</div>
+          <div style="background:linear-gradient(135deg,#70f0a6,#5cc8ff); padding:8px 12px; border-radius:999px; color:#071019; font-weight:800;">⭐ 14-Day Streak</div>
+        </div>
+      </div>
+
+      <!-- Mini goals + progress -->
+      <div style="flex: 0 0 320px; min-width:260px;">
+        <div style="background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,0.04);">
+          <div style="font-weight:800; margin-bottom:8px;">Goals</div>
+
+          <div style="margin-bottom:10px;">
+            <div style="display:flex; justify-content:space-between; font-size:.95rem; color:var(--muted); margin-bottom:6px;">
+              <div>Monthly profit</div>
+              <div id="goalProfitLabel">₹ 2,000</div>
+            </div>
+            <div style="background:#0d0d0f; border-radius:10px; height:10px; overflow:hidden;">
+              <div id="goalProfitBar" style="height:100%; width:62%; background:linear-gradient(90deg,#5cc8ff,#ff76b0);"></div>
+            </div>
+          </div>
+
+          <div style="margin-bottom:10px;">
+            <div style="display:flex; justify-content:space-between; font-size:.95rem; color:var(--muted); margin-bottom:6px;">
+              <div>Customer target</div>
+              <div id="goalCustomersLabel">120</div>
+            </div>
+            <div style="background:#0d0d0f; border-radius:10px; height:10px; overflow:hidden;">
+              <div id="goalCustomersBar" style="height:100%; width:72%; background:linear-gradient(90deg,#ffce52,#70f0a6);"></div>
+            </div>
+          </div>
+
+          <div style="margin-top:10px; color:var(--muted); font-size:.9rem;">Celebrate wins, update goals, and keep improving.</div>
+        </div>
+
+        <!-- Demo controls (for you only) -->
+        <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
+          <button id="demoAddSale" style="flex:1; padding:10px; border-radius:10px; border:0; background:#4cafef; color:#071019; font-weight:700; cursor:pointer;">+ Add Sale ₹100</button>
+          <button id="demoNewCustomer" style="flex:1; padding:10px; border-radius:10px; border:0; background:#ffce52; color:#071019; font-weight:700; cursor:pointer;">+ New Customer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Dashboard JS: reads/writes to localStorage and updates UI
+  (function(){
+    const LS_KEY = 'kidpreneur_dashboard_v1';
+
+    // Default data
+    const defaults = {
+      profit: 1240,
+      customers: 86,
+      streakDays: 14,
+      goalProfit: 2000,
+      goalCustomers: 120
+    };
+
+    // UI elements
+    const profitEl = document.getElementById('profitValue');
+    const customersEl = document.getElementById('customersValue');
+    const streakEl = document.getElementById('streakValue');
+    const goalProfitLabel = document.getElementById('goalProfitLabel');
+    const goalCustomersLabel = document.getElementById('goalCustomersLabel');
+    const goalProfitBar = document.getElementById('goalProfitBar');
+    const goalCustomersBar = document.getElementById('goalCustomersBar');
+
+    // Demo buttons
+    const addSaleBtn = document.getElementById('demoAddSale');
+    const newCustBtn = document.getElementById('demoNewCustomer');
+
+    // Read state
+    function readState(){
+      try{
+        const raw = localStorage.getItem(LS_KEY);
+        if(!raw) return {...defaults};
+        const parsed = JSON.parse(raw);
+        return {...defaults, ...parsed};
+      }catch(e){
+        return {...defaults};
+      }
+    }
+
+    // Write state
+    function writeState(state){
+      try{
+        localStorage.setItem(LS_KEY, JSON.stringify(state));
+      }catch(e){}
+    }
+
+    // Render UI from state
+    function render(state){
+      profitEl.textContent = '₹ ' + numberWithCommas(state.profit);
+      customersEl.textContent = state.customers;
+      streakEl.textContent = state.streakDays + ' days';
+
+      // Goals labels
+      goalProfitLabel.textContent = '₹ ' + numberWithCommas(state.goalProfit);
+      goalCustomersLabel.textContent = state.goalCustomers;
+
+      // Progress bars (capped at 100%)
+      const profitPct = Math.min(100, Math.round((state.profit / state.goalProfit) * 100));
+      const custPct = Math.min(100, Math.round((state.customers / state.goalCustomers) * 100));
+      goalProfitBar.style.width = profitPct + '%';
+      goalCustomersBar.style.width = custPct + '%';
+
+      // Add subtle celebration when streak hits milestones
+      if(state.streakDays && (state.streakDays % 7 === 0)){
+        // temporary highlight
+        const el = streakEl;
+        el.animate([
+          { transform: 'scale(1)', color: '#fff' },
+          { transform: 'scale(1.06)', color: '#70f0a6' },
+          { transform: 'scale(1)', color: '#fff' }
+        ], { duration: 700, easing: 'ease-out' });
+      }
+    }
+
+    // Helpers
+    function numberWithCommas(x){
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    // Initialize
+    let state = readState();
+    render(state);
+
+    // Demo interactions
+    addSaleBtn.addEventListener('click', () => {
+      // Add sale: increase profit by 100, increment streak by 1
+      state.profit += 100;
+      state.streakDays = Math.max(1, state.streakDays + 1);
+      writeState(state);
+      render(state);
+    });
+
+    newCustBtn.addEventListener('click', () => {
+      state.customers += 1;
+      // small chance to also increase profit demo
+      state.profit += 60;
+      writeState(state);
+      render(state);
+    });
+
+    // Optional: update streak daily (demo only)
+    // In real app, you'd timestamp last activity and compute streak
+    // For demo, we provide a small keyboard shortcut: press "S" to add a streak day
+    document.addEventListener('keydown', (e) => {
+      if(e.key.toLowerCase() === 's'){
+        state.streakDays += 1;
+        writeState(state);
+        render(state);
+      }
+    });
+  })();
+</script>
+<!-- ================= End Live Dashboard ================= -->
+
+<!-- ==================== FAQ Section ==================== -->
+<!-- ==================== Sign-In Section ==================== -->
+<section id="signin" style="background:#000; color:#fff; padding:60px 20px; text-align:center;">
+  <h2 style="font-size:2.5rem; margin-bottom:20px; color:#ffcc00;">🔑 Sign In to Start Quiz</h2>
+  <p style="max-width:600px; margin:0 auto 30px; color:#bbb;">
+    Enter your details to begin the Kidpreneur Quiz and test your skills!
+  </p>
+
+  <form id="signinForm" style="max-width:400px; margin:0 auto; text-align:left;">
+    <label style="display:block; margin:10px 0 5px;">Your Name</label>
+    <input type="text" id="name" required="" style="width:100%; padding:10px; border-radius:6px; border:none; margin-bottom:10px;">
+
+    <label style="display:block; margin:10px 0 5px;">Your Email</label>
+    <input type="email" id="email" required="" style="width:100%; padding:10px; border-radius:6px; border:none; margin-bottom:10px;">
+
+    <button type="submit" style="padding:12px 20px; background:#ff4da6; color:#fff; border:none; border-radius:6px; cursor:pointer;">
+      Start Quiz
+    </button>
+  </form>
+</section>
+
+<script>
+  document.getElementById("signinForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    // Redirect to Quiz Section
+    document.getElementById("signin").style.display = "none";
+    document.getElementById("quiz").style.display = "block";
+  });
+</script>
+
+<!-- ==================== Quiz Section ==================== -->
+<section id="quiz" style="display:none; background:#111; color:#fff; padding:60px 20px; text-align:center;">
+  <h2 style="font-size:2.5rem; margin-bottom:20px; color:#ffcc00;">📝 Kidpreneur Quiz</h2>
+  <p style="margin-bottom:30px; color:#bbb;">Answer all 10 questions to test your knowledge!</p>
+
+  <form id="quizForm" style="max-width:600px; margin:0 auto; text-align:left;">
+    <!-- Question 1 -->
+    <label>1. What does an entrepreneur do?</label><br>
+    <input type="radio" name="q1" value="a"> Plays games<br>
+    <input type="radio" name="q1" value="b"> Starts and manages businesses<br>
+    <input type="radio" name="q1" value="c"> Sleeps all day<br><br>
+
+    <!-- Question 2 -->
+    <label>2. What is a Kidpreneur?</label><br>
+    <input type="radio" name="q2" value="a"> A kid who runs a business<br>
+    <input type="radio" name="q2" value="b"> A cartoon character<br>
+    <input type="radio" name="q2" value="c"> A video game<br><br>
+
+    <!-- Question 3 -->
+    <label>3. Why is saving money important?</label><br>
+    <input type="radio" name="q3" value="a"> To buy ice cream<br>
+    <input type="radio" name="q3" value="b"> For future needs and growth<br>
+    <input type="radio" name="q3" value="c"> No reason<br><br>
+
+    <!-- Question 4 -->
+    <label>4. What is profit?</label><br>
+    <input type="radio" name="q4" value="a"> Money earned after expenses<br>
+    <input type="radio" name="q4" value="b"> Money lost<br>
+    <input type="radio" name="q4" value="c"> Free gifts<br><br>
+
+    <!-- Question 5 -->
+    <label>5. Which is eco-friendly?</label><br>
+    <input type="radio" name="q5" value="a"> Plastic bag<br>
+    <input type="radio" name="q5" value="b"> Cloth bag<br>
+    <input type="radio" name="q5" value="c"> Paper thrown on road<br><br>
+
+    <!-- Question 6 -->
+    <label>6. Who are customers?</label><br>
+    <input type="radio" name="q6" value="a"> People who buy products<br>
+    <input type="radio" name="q6" value="b"> Teachers<br>
+    <input type="radio" name="q6" value="c"> Friends only<br><br>
+
+    <!-- Question 7 -->
+    <label>7. Why do businesses advertise?</label><br>
+    <input type="radio" name="q7" value="a"> To inform and attract customers<br>
+    <input type="radio" name="q7" value="b"> To waste money<br>
+    <input type="radio" name="q7" value="c"> Just for fun<br><br>
+
+    <!-- Question 8 -->
+    <label>8. What is teamwork?</label><br>
+    <input type="radio" name="q8" value="a"> Working alone<br>
+    <input type="radio" name="q8" value="b"> Fighting<br>
+    <input type="radio" name="q8" value="c"> Working together to reach goals<br><br>
+
+    <!-- Question 9 -->
+    <label>9. Which skill helps in Kidpreneurship?</label><br>
+    <input type="radio" name="q9" value="a"> Creativity<br>
+    <input type="radio" name="q9" value="b"> Laziness<br>
+    <input type="radio" name="q9" value="c"> Forgetfulness<br><br>
+
+    <!-- Question 10 -->
+    <label>10. Why should Kidpreneurs learn from failure?</label><br>
+    <input type="radio" name="q10" value="a"> To give up<br>
+    <input type="radio" name="q10" value="b"> To improve and grow stronger<br>
+    <input type="radio" name="q10" value="c"> To waste time<br><br>
+
+    <button type="submit" style="padding:12px 20px; background:#ff4da6; color:#fff; border:none; border-radius:6px; cursor:pointer;">
+      Submit Quiz
+    </button>
+  </form>
+
+  <h3 id="result" style="margin-top:30px; color:#00ff99;"></h3>
+</section>
+
+<!-- ==================== Future Dreams Section ==================== -->
+<section id="dreams" style="background:#111; color:#fff; padding:60px 20px; text-align:center;">
+  <h2 style="font-size:2.5rem; margin-bottom:20px; color:#ffcc00;">🌟 Share Your Dream!</h2>
+  <p style="max-width:700px; margin:0 auto 40px; color:#bbb;">
+    Every Kidpreneur has a dream! Tell us what you want to become when you grow up.  
+    Whether it’s an inventor, a chef, a coder, or an entrepreneur, we’d love to hear it. 🚀
+  </p>
+
+  <form id="dreamForm" style="max-width:500px; margin:0 auto; text-align:left;">
+    <label style="display:block; margin:10px 0 5px;">Your Name</label>
+    <input type="text" id="dreamName" required="" style="width:100%; padding:10px; border-radius:6px; border:none; margin-bottom:15px;">
+
+    <label style="display:block; margin:10px 0 5px;">What do you want to become?</label>
+    <textarea id="dreamText" rows="4" required="" style="width:100%; padding:10px; border-radius:6px; border:none; margin-bottom:15px;"></textarea>
+
+    <button type="submit" style="padding:12px 20px; background:#00cc99; color:#fff; border:none; border-radius:6px; cursor:pointer; width:100%;">
+      Share My Dream
+    </button>
+  </form>
+
+  <div id="dreamOutput" style="margin-top:30px; font-size:1.2rem; color:#00ffcc; font-weight:bold;"></div>
+</section>
+
+<script>
+  document.getElementById("dreamForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    let name = document.getElementById("dreamName").value;
+    let dream = document.getElementById("dreamText").value;
+
+    // Show confirmation on screen
+    document.getElementById("dreamOutput").innerText =
+      "🌟 Thank you, " + name + "! You want to become: " + dream;
+    
+    // Reset form
+    document.getElementById("dreamForm").reset();
+  });
+</script>
+
+<!-- ==================== Circuit Demo Section ==================== -->
+<section id="circuit" style="background:#111; color:white; text-align:center; padding:50px 20px;">
+  <h2 style="color:#ffcc00; font-size:2.5em;">🔌 Make Your Own Circuit</h2>
+  <p style="max-width:700px; margin:20px auto; font-size:1.2em;">
+    Here’s a simple demo: when the wire touches the battery, the bulb glows!  
+    This shows how electricity flows in a circuit.
+  </p>
+
+  <svg id="circuitSVG" width="600" height="300" xmlns="http://www.w3.org/2000/svg" style="border:2px solid #444; border-radius:12px; background:#222;">
+    <!-- Battery -->
+    <rect x="50" y="100" width="60" height="100" fill="#555" stroke="#ccc" stroke-width="3"></rect>
+    <rect x="70" y="95" width="20" height="10" fill="#ccc"></rect>
+    <text x="80" y="160" fill="white" font-size="20" text-anchor="middle">+</text>
+
+    <!-- Bulb -->
+    <circle id="bulb" cx="500" cy="150" r="40" fill="yellow" opacity="0.2" stroke="white" stroke-width="3"></circle>
+    <line x1="500" y1="190" x2="500" y2="230" stroke="white" stroke-width="4"></line>
+    <rect x="480" y="230" width="40" height="20" fill="#666"></rect>
+
+    <!-- Wire -->
+    <line id="wire" x1="110" y1="150" x2="500" y2="150" stroke="white" stroke-width="4"></line>
+  </svg>
+
+  <p style="margin-top:20px; font-size:1.1em;">
+    👉 Try clicking the wire to <b>connect/disconnect</b> the circuit!
+  </p>
+</section>
+
+<script>
+  const bulb = document.getElementById("bulb");
+  const wire = document.getElementById("wire");
+  let connected = false;
+
+  wire.addEventListener("click", () => {
+    connected = !connected;
+    if (connected) {
+      bulb.setAttribute("opacity", "1");
+      bulb.setAttribute("fill", "gold");
+    } else {
+      bulb.setAttribute("opacity", "0.2");
+      bulb.setAttribute("fill", "yellow");
+    }
+  });
+</script>
+
+
+<script>
+  document.getElementById("quizForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    let score = 0;
+    let answers = {
+      q1:"b", q2:"a", q3:"b", q4:"a", q5:"b",
+      q6:"a", q7:"a", q8:"c", q9:"a", q10:"b"
+    };
+    for (let q in answers) {
+      let chosen = document.querySelector('input[name="'+q+'"]:checked');
+      if (chosen && chosen.value === answers[q]) score++;
+    }
+    document.getElementById("result").innerText = "🎉 You scored " + score + "/10!";
+  });
+</script>
+
+
+<section id="faq" style="background:#111; color:white; padding:60px 20px; text-align:center;">
+  <h2 style="font-size:2rem; margin-bottom:20px;">❓ Frequently Asked Questions</h2>
+  <p style="max-width:600px; margin:0 auto 40px; font-size:1.1rem; color:#ccc;">
+    Got questions about <strong>Kidpreneur</strong>? Here are some quick answers.
+  </p>
+
+  <div style="max-width:800px; margin:0 auto; text-align:left;">
+    <div style="background:#222; padding:20px; margin-bottom:15px; border-radius:10px; cursor:pointer;">
+      <h3 style="margin:0; font-size:1.2rem;">Is it safe for kids?</h3>
+      <p style="margin-top:10px; font-size:1rem; color:#bbb;">Yes ✅ Everything is designed to be safe, fun, and supportive for young learners.</p>
+    </div>
+
+    <div style="background:#222; padding:20px; margin-bottom:15px; border-radius:10px; cursor:pointer;">
+      <h3 style="margin:0; font-size:1.2rem;">Do I need to code?</h3>
+      <p style="margin-top:10px; font-size:1rem; color:#bbb;">Nope 🚀 Many kidpreneur projects are about creativity and business ideas, not coding.</p>
+    </div>
+
+    <div style="background:#222; padding:20px; margin-bottom:15px; border-radius:10px; cursor:pointer;">
+      <h3 style="margin:0; font-size:1.2rem;">What if I fail?</h3>
+      <p style="margin-top:10px; font-size:1rem; color:#bbb;">Failure is part of learning 🌱 Every attempt makes you stronger and more experienced.</p>
+    </div>
+
+    <div style="background:#222; padding:20px; margin-bottom:15px; border-radius:10px; cursor:pointer;">
+      <h3 style="margin:0; font-size:1.2rem;">How much time does it take?</h3>
+      <p style="margin-top:10px; font-size:1rem; color:#bbb;">Even a few hours per week can make a big difference ⏳. Consistency matters more than speed.</p>
+    </div>
+  </div>
+
+  <br>
+  <a href="https://kidprenuer-eosin.vercel.app/#home" style="color:#ffcc00; text-decoration:none; font-size:1rem;">⬅ Back to Home</a>
+</section>
+
+<h1 style="text-align:center;">Our Famous Examples </h1>
+
+<!-- YouTube Embed -->
+  <div style="max-width:800px; margin:0 auto;">
+    <iframe width="100%" height="450" src="./Kidpreneur Hub — Creative Kids, Smart Starts_files/f23YllvEEcM.html" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+    </iframe>
+  </div>
+
+
+<h1 style="text-align:center;">what is A Kidprenuer?  </h1>
+
+<div style="max-width:800px; margin:0 auto;">
+    <iframe width="100%" height="450" src="./Kidpreneur Hub — Creative Kids, Smart Starts_files/2CIXlvwD2bY.html" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+    </iframe>
+  </div>
+
+
+<h1 style="text-align:center;">One of our most sucessful kid   </h1>
+
+<div style="max-width:800px; margin:0 auto;">
+    <iframe width="100%" height="450" src="./Kidpreneur Hub — Creative Kids, Smart Starts_files/1YCGM7FiCGg.html" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+    </iframe>
+  </div>
+
+
+
+
+  <!-- ---------- SUCCESS STORIES (carousel) ---------- -->
+   <!-- ==================== Feedback Section ==================== -->
+<section id="feedback" style="background:#111; color:#fff; padding:60px 20px; text-align:center;">
+  <h2 style="font-size:2.5rem; margin-bottom:20px; color:#ffcc00;">💬 Feedback from Our Supporters</h2>
+  <p style="max-width:700px; margin:0 auto 40px; color:#bbb;">
+    Here’s what people are saying about Kidpreneur projects. Your words inspire us to grow!
+  </p>
+
+  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px;">
+    <div style="background:#222; padding:20px; border-radius:10px; max-width:300px;">
+      <p>"Amazing work! These kids are so creative and inspiring. Keep going!"</p>
+      <h4 style="margin-top:10px; color:#ffcc00;">– Priya, Parent</h4>
+    </div>
+
+    <div style="background:#222; padding:20px; border-radius:10px; max-width:300px;">
+      <p>"I love the eco-friendly idea. This is exactly what the world needs right now."</p>
+      <h4 style="margin-top:10px; color:#ffcc00;">– Rahul, Teacher</h4>
+    </div>
+
+    <div style="background:#222; padding:20px; border-radius:10px; max-width:300px;">
+      <p>"Kidpreneur gives kids real confidence to build their dreams. Fantastic!"</p>
+      <h4 style="margin-top:10px; color:#ffcc00;">– Ananya, Student</h4>
+    </div>
+  </div>
+
+  <br><br>
+  <!-- Feedback Form -->
+  <h3 style="margin-bottom:15px;">💡 Share Your Feedback</h3>
+  <form style="max-width:500px; margin:0 auto; text-align:left;">
+    <label style="display:block; margin:10px 0 5px;">Your Name</label>
+    <input type="text" style="width:100%; padding:10px; border-radius:6px; border:none; margin-bottom:10px;">
+
+    <label style="display:block; margin:10px 0 5px;">Your Feedback</label>
+    <textarea rows="4" style="width:100%; padding:10px; border-radius:6px; border:none; margin-bottom:10px;"></textarea>
+
+    <button type="submit" style="padding:12px 20px; background:#ff4da6; color:#fff; border:none; border-radius:6px; cursor:pointer;">
+      Submit Feedback
+    </button>
+  </form>
+</section>
+
+  <section id="stories" data-aos="fade-up" class="aos-init">
+    <div class="section-inner container">
+      <div class="section-title">Success Stories</div>
+      <p class="lead">Small starts, big lessons: short stories of young creators who shipped tiny projects and learned a lot.</p>
+
+      <div class="carousel" style="margin-top:12px">
+        <div class="case">
+          <img src="./Kidpreneur Hub — Creative Kids, Smart Starts_files/photo-1556761175-4b46a572b786" alt="success 1">
+          <h4 style="margin:.3rem 0 .4rem">Lina's Seed Kits</h4>
+          <p class="muted small">Made seed starter kits from recycled cups and sold them at a neighborhood fair. Learned pricing and packaging.</p>
+        </div>
+
+        <div class="case">
+        <img src="./Kidpreneur Hub — Creative Kids, Smart Starts_files/photo-1503803548695-c2a7b4a5b875.avip">
+          <h4 style="margin:.3rem 0 .4rem">Arjun's Art Cards</h4>
+          <p class="muted small">Designed greeting cards and sold them at school. Practiced talking to customers and handling money.</p>
+        </div>
+
+        <div class="case">
+          <img src="./Kidpreneur Hub — Creative Kids, Smart Starts_files/photo-1544716278-ca5e3f4abd8c" alt="success 3">
+          <h4 style="margin:.3rem 0 .4rem">Maya's Mini-Bakery</h4>
+          <p class="muted small">Baked muffin packs for weekend markets with adult supervision and learned about hygiene and cost.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- ---------- STEPS ---------- -->
+  <section id="steps" data-aos="fade-up" class="aos-init">
+    <div class="section-inner container">
+      <div class="section-title">5 Simple Steps to Start</div>
+      <p class="lead">Concrete steps kids can take with adult support.</p>
+
+      <div style="margin-top:12px">
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div><strong>Notice a small problem.</strong> Write it down and sketch a tiny solution.</div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div><strong>Make one sample.</strong> Use low-cost materials and test it with a friend or family member.</div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div><strong>Ask for feedback.</strong> Get 3–5 opinions and note one change to make.</div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div><strong>Set a tiny goal.</strong> Sell 5 items, or present your idea at a school event.</div>
+          </div>
+          <div class="step">
+            <div class="step-num">5</div>
+            <div><strong>Celebrate learning.</strong> Share what you improved and thank helpers.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- ---------- LIKE / INTERACTIVE PANEL ---------- -->
+  <section id="like" data-aos="fade-up" class="aos-init">
+    <div class="section-inner container">
+      <div class="section-title">Show Support — Like This Project</div>
+      <p class="lead">Your like is saved only on this device for privacy. It helps us know people enjoy this page.</p>
+
+      <div style="margin-top:14px" class="like-panel">
+        <div class="like-big">
+          <div style="display:flex; gap:12px; align-items:center">
+            <div style="width:56px; height:56px; border-radius:12px; display:grid; place-items:center; background:linear-gradient(135deg,var(--accent1),var(--accent3)); color:#071019; font-weight:800; font-size:20px;">👍</div>
+            <div>
+              <div class="small muted">If this helped, tap the button</div>
+              <div class="like-count" id="likeCount">Millions of  people liked this</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap">
+          <button id="likeBtn" aria-label="Like this page" title="Like" class="like-big-btn" style="padding:12px 18px; border-radius:999px; border:0; background:linear-gradient(135deg,var(--accent2),#ffd678); cursor:pointer; font-weight:800;">👍 Like</button>
+          <button id="resetBtn" title="Reset likes (clears local storage)" style="padding:10px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:var(--muted); cursor:pointer;">Reset</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- ---------- INSPIRATIONAL QUOTE ---------- -->
+  <section data-aos="fade-up" class="aos-init">
+    <div class="section-inner container">
+      <div class="quote">
+        <h3 style="margin-bottom:8px">“Playful ideas + steady practice = confident creators.”</h3>
+        <p class="muted">Start with small experiments and learn every step. The goal is growth, not perfection.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me Section -->
+<section id="about-me" style="padding:60px; background:#111; color:white; text-align:center;">
+  <h1 style="font-size:40px; color:#62ff00; margin-bottom:20px;">About Us</h1>
+
+
+  <p style="max-width:700px; margin:auto; font-size:18px; line-height:1.6;">
+    Hi, we are <b>Legendary Meliora Students</b>! 🌟  
+ we are passionate about innovation, creativity, and solving real-world problems.
+    <br> We Study in 7th grade from the school Meliora world school.
+    <br>We feel proud for Ourselfs for doing this project,and We hope the Judges like this.
+    As We are  Kidpreneur, We love exploring new ideas, building projects, and sharing them with others.  
+    We all dream  to become <b> Business people</b>, And we believe kids can create amazing things when given the right tools and support. 
+    <br></p><h1 style="font-size:40px; color:#00e1ff; margin-bottom:20px;">Yours Lovingly Legendary Meliora Students</h1> 
+    <br><br>
+    On this platform, we want to inspire others to think big, start small, and keep learning every day. 🚀
+  <p></p>
+</section>
+
+
+
+
+  <!-- ---------- FOOTER ---------- -->
+  <footer data-aos="fade-up" class="aos-init">
+    <div class="container">
+      <div style="display:flex; gap:18px; align-items:center; justify-content:center; flex-wrap:wrap;">
+        <div class="small muted">© 2025 Kidpreneur Hub</div>
+        <div class="small muted">Built with care • Parental guidance recommended</div>
+      </div>
+
+      <div class="socials" style="margin-top:14px">
+        <a href="https://kidprenuer-eosin.vercel.app/#" title="Share"><i class="fa-brands fa-twitter"></i></a>
+        <a href="https://kidprenuer-eosin.vercel.app/#" title="Share"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://kidprenuer-eosin.vercel.app/#" title="Share"><i class="fa-solid fa-link"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================
+       Scripts (AOS + local JS)
+       ========================= -->
+
+  <!-- AOS JS -->
+  <script src="./Kidpreneur Hub — Creative Kids, Smart Starts_files/aos.js.download"></script>
+
+  <script>
+    // Initialize AOS (Animate On Scroll)
+    if (window.AOS) {
+      AOS.init({
+        duration: 750,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 60
+      });
+    }
+
+    // ------------ Persistent Like Counter (localStorage) ------------
+    (function(){
+      const STORAGE_KEY = 'kidpreneur_hub_likes_v1';
+      const likeCountEl = document.getElementById('likeCount');
+      const likeBtn = document.getElementById('likeBtn');
+      const heroLike = document.getElementById('heroLike');
+      const resetBtn = document.getElementById('resetBtn');
+
+      function readLikes(){
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          const n = raw === null ? 0 : parseInt(raw, 10);
+          return Number.isFinite(n) ? n : 0;
+        } catch(e){
+          return 0;
+        }
+      }
+      function writeLikes(n){
+        try {
+          localStorage.setItem(STORAGE_KEY, String(n));
+        } catch(e){}
+      }
+      function render(n){
+        likeCountEl.textContent = n + (n === 1 ? ' person liked this' : ' people liked this');
+      }
+
+      // Set initial count from storage
+      let likes = readLikes();
+      render(likes);
+
+      // Increase likes when clicking the like button(s)
+      function addLike(){
+        likes += 1;
+        writeLikes(likes);
+        render(likes);
+        // small confetti-like visual feedback
+        pulseLikeBtn();
+      }
+
+      function pulseLikeBtn(){
+        likeBtn.animate([
+          { transform: 'scale(1)' },
+          { transform: 'scale(1.06)' },
+          { transform: 'scale(1)' }
+        ], { duration: 260, easing: 'ease-out' });
+      }
+
+      likeBtn.addEventListener('click', addLike);
+      if(heroLike) heroLike.addEventListener('click', addLike);
+
+      // Reset (clear storage) — for demo only
+      resetBtn.addEventListener('click', () => {
+        if(!confirm('Clear saved likes for this page on this device?')) return;
+        likes = 0;
+        writeLikes(likes);
+        render(likes);
+      });
+
+      // Accessibility: allow Enter/Space to trigger
+      likeBtn.addEventListener('keyup', (e) => {
+        if(e.key === 'Enter' || e.key === ' ') addLike();
+      });
+    })();
+    
+
+    // ---------- Smooth scroll for internal links ----------
+    (function(){
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click', function(e){
+          const targetId = this.getAttribute('href').slice(1);
+          if(!targetId) return;
+          const target = document.getElementById(targetId);
+          if(target){
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    })();
+    
+  </script>
+
+  <!--
+    Notes:
+    - This file uses Unsplash image URLs (free to use) for a polished demo.
+    - Font Awesome CDN link includes a placeholder integrity value — if your browser blocks it,
+      comment out the <link> tag and rely on system icons or remove the <i> tags.
+    - To run locally: save as index.html, open in VS Code and choose "Open with Live Server".
+    - The like count is stored in localStorage and is visible only in this browser/profile.
+    - For production/real backend persistence, replace localStorage with an API call.
+  -->
+
+
+</body></html>
